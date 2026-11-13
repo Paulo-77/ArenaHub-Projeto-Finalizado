@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArenaHub | O jogo começa aqui</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="#">
+        <span class="brand-mark">A</span>
+        <span>ARENA<span class="brand-light">HUB</span></span>
+    </a>
+
+    <nav class="main-nav">
+        <button class="nav-link active" data-section="inicio">Início</button>
+        <button class="nav-link" data-section="campeonatos">Campeonatos</button>
+        <button class="nav-link" data-section="profissional">Futebol Profissional</button>
+        <button class="nav-link" data-section="partidas">Partidas</button>
+        <button class="nav-link" data-section="classificacao">Classificação</button>
+        <button class="nav-link" data-section="equipes">Equipes</button>
+    </nav>
+
+    <button class="admin-button" id="abrir-admin">PAINEL ↗</button>
+    <button class="menu-mobile" id="menu-mobile">☰</button>
+
+</header>
+
+<main>
+
+    <!-- INÍCIO -->
+    <section class="view active" id="view-inicio">
+
+        <div class="hero">
+
+            <div class="hero-copy">
+
+                <div class="eyebrow">
+                    <i></i> FUTEBOL • COMPETIÇÃO • COMUNIDADE
+                </div>
+
+                <h1>O JOGO<br>COMEÇA <em>AQUI.</em></h1>
+
+                <p>
+                    Uma nova arena para acompanhar campeonatos,
+                    descobrir talentos e viver cada lance.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="primary-button" data-go="campeonatos">
+                        EXPLORAR CAMPEONATOS ↗
+                    </button>
+
+                    <button class="text-button" data-go="partidas">
+                        Ver partidas →
+                    </button>
+                </div>
+
+                <div class="hero-footnote">
+                    — MAIS QUE UM PLACAR. UMA EXPERIÊNCIA.
+                </div>
+
+            </div>
+
+            <div class="hero-art">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="art-number">90<span>′</span></div>
+                <div class="art-ball">⚽</div>
+                <div class="art-label">MINUTOS<br>DE HISTÓRIA</div>
+                <div class="art-tag">EST. 2026 • ARENAHUB</div>
+            </div>
+
+        </div>
+
+        <div class="stats-strip">
+            <div>
+                <b id="stat-campeonatos">—</b>
+                <span>CAMPEONATOS</span>
+            </div>
+
+            <div>
+                <b id="stat-equipes">—</b>
+                <span>EQUIPES</span>
+            </div>
+
+            <div>
+                <b id="stat-jogadores">—</b>
+                <span>JOGADORES</span>
+            </div>
+
+            <div>
+                <b id="stat-partidas">—</b>
+                <span>PARTIDAS FINALIZADAS</span>
+            </div>
+        </div>
+
+        <section class="content-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <small>ACOMPANHE DE PERTO</small>
+                    <h2>ÚLTIMAS <em>PARTIDAS</em></h2>
+                </div>
+
+                <button class="outline-button" data-go="partidas">
+                    TODAS AS PARTIDAS ↗
+                </button>
+
+            </div>
+
+            <div class="match-grid" id="home-partidas">
+                Carregando...
+            </div>
+
+        </section>
+
+        <section class="content-section bottom-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <small>A DISPUTA NÃO PARA</small>
+                    <h2>CAMPEONATOS <em>EM FOCO</em></h2>
+                </div>
+
+                <button class="outline-button" data-go="campeonatos">
+                    VER CAMPEONATOS ↗
+                </button>
+
+            </div>
+
+            <div class="tournament-grid" id="home-campeonatos">
+                Carregando...
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- CAMPEONATOS ARENAHUB -->
+    <section class="view" id="view-campeonatos">
+
+        <div class="page-heading">
+            <small>CALENDÁRIO DA ARENA</small>
+            <h1>CAMPEONA<em>TOS.</em></h1>
+            <p>Descubra as competições e acompanhe cada etapa.</p>
+        </div>
+
+        <div class="content-section">
+            <div class="tournament-grid" id="lista-campeonatos"></div>
+        </div>
+
+    </section>
+
+
+    <!-- FUTEBOL PROFISSIONAL -->
+    <section class="view" id="view-profissional">
+
+        <div class="page-heading">
+            <small>O FUTEBOL PELO MUNDO</small>
+            <h1>FUTEBOL <em>PROFISSIONAL.</em></h1>
+            <p>
+                Acompanhe campeonatos, clubes e competições oficiais.
+            </p>
+        </div>
+
+        <div class="filter-row">
+
+            <select id="profissional-pais">
+                <option value="Brazil">Brasil</option>
+                <option value="England">Inglaterra</option>
+                <option value="Spain">Espanha</option>
+                <option value="Germany">Alemanha</option>
+                <option value="Italy">Itália</option>
+                <option value="France">França</option>
+            </select>
+
+            <select id="profissional-temporada">
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+
+            <button class="primary-button" id="buscar-profissional">
+                BUSCAR CAMPEONATOS ↗
+            </button>
+
+        </div>
+
+        <div class="tournament-grid" id="lista-profissional">
+
+            <div class="loading-card">
+                Selecione um país e uma temporada para consultar.
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- DETALHES DO CAMPEONATO PROFISSIONAL -->
+<section class="view" id="view-detalhes-profissional">
+
+    <div class="page-heading">
+        <button class="text-button" id="voltar-profissional">
+            ← VOLTAR AOS CAMPEONATOS
+        </button>
+
+        <small id="detalhe-pais">FUTEBOL PROFISSIONAL</small>
+
+        <div style="display:flex;align-items:center;gap:20px;margin-top:20px;">
+            <img id="detalhe-logo"
+                 src=""
+                 alt="Escudo do campeonato"
+                 style="width:85px;height:85px;object-fit:contain;">
+
+            <div>
+                <h1 id="detalhe-nome">CAMPEONATO.</h1>
+                <p id="detalhe-temporada">Temporada</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-row">
+        <button class="filter-pill active" data-detalhe="classificacao">
+            CLASSIFICAÇÃO
+        </button>
+
+        <button class="filter-pill" data-detalhe="partidas">
+            PARTIDAS
+        </button>
+
+        <button class="filter-pill" data-detalhe="equipes">
+            EQUIPES
+        </button>
+
+        <button class="filter-pill" data-detalhe="artilheiros">
+            ARTILHARIA
+        </button>
+    </div>
+
+    <div class="content-section">
+        <div id="conteudo-detalhe-profissional">
+            <div class="loading-card">
+                Selecione uma competição para visualizar os dados.
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+    <!-- PARTIDAS -->
+    <section class="view" id="view-partidas">
+
+        <div class="page-heading">
+            <small>CADA JOGO CONTA</small>
+            <h1>PARTI<em>DAS.</em></h1>
+            <p>Resultados, confrontos e próximos desafios.</p>
+        </div>
+
+        <div class="filter-row">
+
+            <select id="filtro-partidas">
+                <option value="">Todos os campeonatos</option>
+            </select>
+
+            <div class="filter-pills">
+                <button class="filter-pill active" data-filter="todas">Todas</button>
+                <button class="filter-pill" data-filter="finalizada">Finalizadas</button>
+                <button class="filter-pill" data-filter="agendada">Agendadas</button>
+            </div>
+
+        </div>
+
+        <div class="match-list" id="lista-partidas"></div>
+
+    </section>
+
+
+    <!-- CLASSIFICAÇÃO -->
+    <section class="view" id="view-classificacao">
+
+        <div class="page-heading">
+            <small>A CORRIDA PELO TOPO</small>
+            <h1>CLASSIFI<em>CAÇÃO.</em></h1>
+            <p>Veja quem está na frente e quem ainda busca a virada.</p>
+        </div>
+
+        <div class="filter-row">
+            <select id="filtro-classificacao"></select>
+
+            <select id="filtro-grupo">
+                <option value="">Todos os grupos</option>
+            </select>
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>EQUIPE</th>
+                        <th>J</th>
+                        <th>V</th>
+                        <th>E</th>
+                        <th>D</th>
+                        <th>SG</th>
+                        <th>PTS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-classificacao"></tbody>
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- EQUIPES -->
+    <section class="view" id="view-equipes">
+
+        <div class="page-heading">
+            <small>QUEM FAZ O JOGO</small>
+            <h1>NOSSAS <em>EQUIPES.</em></h1>
+            <p>Conheça os clubes que entram em campo na ArenaHub.</p>
+        </div>
+
+        <div class="team-grid" id="lista-equipes"></div>
+
+    </section>
+
+
+    <!-- PAINEL ADMINISTRATIVO -->
+    <section class="view" id="view-admin">
+
+        <div class="page-heading">
+            <small>CENTRAL DE CONTROLE</small>
+            <h1>PAINEL <em>ADMIN.</em></h1>
+            <p>Gerencie as informações da competição.</p>
+        </div>
+
+        <div class="admin-grid">
+
+            <form class="admin-card" id="form-equipe">
+
+                <h3>CADASTRAR EQUIPE</h3>
+
+                <input name="nome" placeholder="Nome da equipe" required>
+                <input name="cidade" placeholder="Cidade">
+                <input name="responsavel" placeholder="Responsável">
+                <input name="email" type="email" placeholder="E-mail">
+
+                <button class="primary-button">SALVAR EQUIPE ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-campeonato">
+
+                <h3>CRIAR CAMPEONATO</h3>
+
+                <input name="nome" placeholder="Nome do campeonato" required>
+                <input name="temporada" placeholder="Temporada (ex.: 2026)" required>
+                <input name="local" placeholder="Local">
+
+                <label>
+                    Início
+                    <input name="data_inicio" type="date">
+                </label>
+
+                <label>
+                    Final
+                    <input name="data_fim" type="date">
+                </label>
+
+                <button class="primary-button">CRIAR CAMPEONATO ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-jogador">
+
+                <h3>CADASTRAR JOGADOR</h3>
+
+                <select name="equipe_id" id="jogador-equipe" required>
+                    <option value="">Escolha uma equipe</option>
+                </select>
+
+                <input name="nome" placeholder="Nome do jogador" required>
+                <input name="numero_camisa" type="number" min="1" max="99" placeholder="Número da camisa">
+                <input name="posicao" placeholder="Posição">
+                <input name="data_nascimento" type="date">
+
+                <button class="primary-button">SALVAR JOGADOR ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-grupo">
+
+                <h3>CRIAR GRUPO</h3>
+
+                <select name="campeonato_id" id="grupo-campeonato" required>
+                    <option value="">Campeonato</option>
+                </select>
+
+                <input name="nome" placeholder="Nome (ex.: Grupo A)" required>
+
+                <button class="primary-button">CRIAR GRUPO ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-inscricao">
+
+                <h3>INSCREVER EQUIPE</h3>
+
+                <select name="campeonato_id" id="inscricao-campeonato" required>
+                    <option value="">Campeonato</option>
+                </select>
+
+                <select name="equipe_id" id="inscricao-equipe" required>
+                    <option value="">Equipe</option>
+                </select>
+
+                <select name="grupo_id" id="inscricao-grupo">
+                    <option value="">Sem grupo por enquanto</option>
+                </select>
+
+                <button class="primary-button">CONFIRMAR INSCRIÇÃO ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-partida">
+
+                <h3>AGENDAR PARTIDA</h3>
+
+                <select name="campeonato_id" id="partida-campeonato" required>
+                    <option value="">Campeonato</option>
+                </select>
+
+                <select name="fase">
+                    <option value="grupos">Fase de grupos</option>
+                    <option value="oitavas">Oitavas</option>
+                    <option value="quartas">Quartas</option>
+                    <option value="semifinal">Semifinal</option>
+                    <option value="final">Final</option>
+                    <option value="terceiro_lugar">Terceiro lugar</option>
+                </select>
+
+                <select name="grupo_id" id="partida-grupo">
+                    <option value="">Escolha o grupo</option>
+                </select>
+
+                <select name="equipe_mandante_id" id="partida-mandante" required>
+                    <option value="">Mandante</option>
+                </select>
+
+                <select name="equipe_visitante_id" id="partida-visitante" required>
+                    <option value="">Visitante</option>
+                </select>
+
+                <label>
+                    Data e hora
+                    <input name="data_hora" type="datetime-local">
+                </label>
+
+                <input name="local" placeholder="Local">
+
+                <button class="primary-button">AGENDAR PARTIDA ↗</button>
+
+            </form>
+
+
+            <form class="admin-card" id="form-placar">
+
+                <h3>ATUALIZAR PLACAR</h3>
+
+                <select name="partida_id" id="placar-partida" required>
+                    <option value="">Escolha uma partida</option>
+                </select>
+
+                <div class="score-inputs">
+                    <input name="gols_mandante" type="number" min="0" placeholder="Casa" required>
+                    <span>×</span>
+                    <input name="gols_visitante" type="number" min="0" placeholder="Fora" required>
+                </div>
+
+                <button class="primary-button">SALVAR PLACAR ↗</button>
+
+            </form>
+
+        </div>
+
+        <div class="admin-note">
+            As alterações feitas aqui são salvas diretamente no banco MySQL.
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- RODAPÉ -->
+<footer>
+
+    <a class="brand" href="#">
+        <span class="brand-mark">A</span>
+        <span>ARENA<span class="brand-light">HUB</span></span>
+    </a>
+
+    <span>O JOGO COMEÇA AQUI.</span>
+    <span>© 2026 ARENAHUB</span>
+
+</footer>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
